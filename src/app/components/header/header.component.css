@@ -8,6 +8,17 @@
     overflow: hidden;
 }
 
+.homeIcon{
+    margin-left: 20px;
+    margin-right: 10px;
+    padding: 0px 10px;
+}
+
+.homeIcon:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .navOptions{
     display: flex;
     flex-direction: row;
@@ -32,14 +43,19 @@
     color: #fff;
 }
 
+.about{
+    padding: 0px 25px; 
+    border-radius: 50px;
+}
+
 .navOptions div:hover{
     cursor: pointer;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-    
 }
 
-.newQuote:active{
+.navOptions div:active{
     background-color: rgba(0,0,0,0.4);
+    color: #fff;
 }
 
 .newQuote h2+p{
