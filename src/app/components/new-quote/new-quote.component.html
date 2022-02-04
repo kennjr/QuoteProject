@@ -1,0 +1,19 @@
+<div class="container" >
+    <div class="loginHeader">
+        <p>Create an Account</p>
+    </div>
+    <form (ngSubmit)="addNewQuote()" class="loginForm">
+        <div class="form-control">
+            <textarea placeholder="Quote" name="quote" [(ngModel)]="quote" cols="30" rows="10"></textarea>
+            <!-- <input type="text" placeholder="Quote" name="quote" [(ngModel)]="quote"> -->
+        </div>
+        <div class="form-control">
+            <input type="text" placeholder="Author" name="author" [(ngModel)]="author">
+        </div>
+        <div class="btnContainer">
+            <button class="btn btn-block">Cancel</button>
+            <input type="submit" value="Add Quote" class="btn btn-block">
+        </div>
+        
+    </form>
+</div>
