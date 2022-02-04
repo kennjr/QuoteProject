@@ -1,0 +1,47 @@
+
+
+.headerContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.navOptions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 20px;
+}
+
+.navOptions div{
+    margin: 0px 20px;
+}
+
+.newQuote{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ff5722;
+    height: 70%;
+    border-radius: 50px;
+    padding: 0px 15px;
+    color: #fff;
+}
+
+.navOptions div:hover{
+    cursor: pointer;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    
+}
+
+.newQuote:active{
+    background-color: rgba(0,0,0,0.4);
+}
+
+.newQuote h2+p{
+    margin-left: 10px;
+}
