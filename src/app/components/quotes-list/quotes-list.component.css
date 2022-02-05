@@ -1,0 +1,17 @@
+.quotesListContainer{
+    background-color: #fefefa;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    margin: 10px 20px;
+    padding: 0px 10px;
+    border-radius: 4px;
+}
+
+.container{
+    height: 100%;
+    width: 70%;
+    margin-top: 7%;
+    margin-left: 10%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
