@@ -1,0 +1,8 @@
+<p>{{teststring}}</p>
+<div *ngFor="let quote of allQuotesArray; let i = index">
+    <div class="quoteContainer">
+        <p class="quoteText">{{quote.quote}}</p>
+        <p class="quoteAuthor"> - {{quote.author}}</p>
+    </div>
+</div>
+
