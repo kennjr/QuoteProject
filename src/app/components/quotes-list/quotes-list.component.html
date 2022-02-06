@@ -1,8 +1,57 @@
-<p>{{teststring}}</p>
-<div *ngFor="let quote of allQuotesArray; let i = index">
-    <div class="quoteContainer">
-        <p class="quoteText">{{quote.quote}}</p>
-        <p class="quoteAuthor"> - {{quote.author}}</p>
+<div class="container">
+    <div class="quotesListContainer" *ngFor="let quote of allQuotesArray; let i = index; ">
+        <div *ngIf="mostUpvotedQuoteIndex !== i" class="quoteContainer" (click)="toggleQuoteDetails(i)">
+            <div class="quoteMain">
+                <p [ngClass]="{'highlightit' : mostUpvotedQuoteIndex === i}" class="quoteText">{{quote.quote}} </p>
+                <p appHighlight [ngClass]="{'highlightit' : mostUpvotedQuoteIndex === i}" *ngIf="mostUpvotedQuoteIndex === i" class="quoteText">{{quote.quote}} </p>
+                <p class="quoteAuthor"> {{mostUpvotedQuoteIndex}} {{i}} - {{quote.author}}</p>
+            </div>
+            <div style="width: 1.5px; background-color: #ddd; margin-top: 10px; margin-bottom: 0px;"></div>
+            <div class="quoteVoteContainer">
+                <div class="voteContainer upVoteContainer">
+                    <p>{{quote.upvt_count}}</p>
+                    <p>Up<br>vote(s)</p>
+                </div>
+                <div class="voteContainer upVoteContainer">
+                    <p>{{quote.dwnvt_count}}</p>
+                    <p>Down<br>vote(s)</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="mostUpvotedQuoteIndex === i" appHighlight class="quoteContainer" (click)="toggleQuoteDetails(i)">
+            <div class="quoteMain">
+                <p [ngClass]="{'highlightit' : mostUpvotedQuoteIndex === i}" class="quoteText">{{quote.quote}} </p>
+                <!-- <p [ngClass]="{'highlightit' : mostUpvotedQuoteIndex === i}" *ngIf="mostUpvotedQuoteIndex === i" class="quoteText">{{quote.quote}} </p> -->
+                <p class="quoteAuthor"> {{mostUpvotedQuoteIndex}} {{i}} - {{quote.author}}</p>
+            </div>
+            <div style="width: 1.5px; background-color: #ddd; margin-top: 10px; margin-bottom: 0px;"></div>
+            <div class="quoteVoteContainer">
+                <div class="voteContainer upVoteContainer">
+                    <p>{{quote.upvt_count}}</p>
+                    <p>Up<br>vote(s)</p>
+                </div>
+                <div class="voteContainer upVoteContainer">
+                    <p>{{quote.dwnvt_count}}</p>
+                    <p>Down<br>vote(s)</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="quote.expandView" class="quoteContainer moreInfoContainer">
+            <div class="quoteMain">
+                <p>Created by {{quote.creator}} at {{quote.time}} {{quote.date | elapsedTime}}</p>
+            </div>
+            <div style="width: 1.5px; background-color: #ddd; margin-top: 0px; margin-bottom: 10px;"></div>
+            <div class="quoteVoteContainer">
+                <div class="voteContainer upVoteContainer">
+                    <p (click)="updateVoteCount(i, true)" class="btn">Up</p>
+                </div>
+                <div class="voteContainer upVoteContainer">
+                    <p (click)="updateVoteCount(i, false)" class="btn">Down</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+
+{{mostUpvotedQuoteIndex}}
