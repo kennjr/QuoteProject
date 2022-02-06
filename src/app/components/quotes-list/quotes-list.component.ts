@@ -49,9 +49,34 @@ export class QuotesListComponent implements OnInit {
   }
 
   updateVoteCount (index: number, isUpVt: boolean){
-    const quote = this.allQuotesArray[index];
+    let quote = this.allQuotesArray[index];
+    if(isUpVt && !quote.isUpVt && !quote.isDwnVt){
+      quote.upvt_count += 1;
+      quote.isUpVt = true;
+      console.log("The first")
+    }
+    else if(!isUpVt && !quote.isDwnVt && !quote.isUpVt){
+      quote.dwnvt_count += 1;
+      quote.isDwnVt = true;
+      console.log("The second")
+    }
+    else if(isUpVt && quote.isDwnVt){
+      quote.dwnvt_count -= 1;
+      quote.upvt_count += 1;
 
-    console.log("The quote " + quote.quote + " has a new " + isUpVt)
+      quote.isUpVt = true;
+      quote.isDwnVt = false;
+      console.log("The third")
+    }
+    else if(!isUpVt && quote.isUpVt){
+      quote.dwnvt_count += 1;
+      quote.upvt_count -= 1;
+
+      quote.isUpVt = false;
+      quote.isDwnVt = true;
+      console.log("The fourth")
+    }
+    this.quoteservice.updateLocalArrayQuote(index, quote);
   }
 
 }
