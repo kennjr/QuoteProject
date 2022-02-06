@@ -44,4 +44,25 @@ export class QuotesService {
     this.localQuotesArray[index] = newQuote;
   }
 
+  getQuoteWithHighestUpVote():number{
+    let theVal = 0;
+    if(this.localQuotesArray.length >= 0){
+      for(let x = 0; x <= this.localQuotesArray.length - 1; x++){
+        let currentQuote = this.localQuotesArray[x];
+        let quoteUpVtCount = currentQuote.upvt_count;
+        if(quoteUpVtCount > 0){
+          console.log("NaN changed to" + x)
+          // theVal = x;
+          console.log(currentQuote)
+
+          if(theVal < x){
+            theVal = x;
+          }
+        }
+
+      }
+    }
+    return theVal;
+  }
+
 }
