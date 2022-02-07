@@ -2,6 +2,35 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
+## Description
+
+This is a simple web application where users can share quotes with others. The site uses most of the basic features of the angular framework. It's a very basic, bare-bones version of site.
+
+## Live link
+
+https://kennjr.github.io/QuoteProject/
+
+## Known Bugs
+
+We don't have any known bugs.
+
+## Technologies Used
+
+This project uses HTML and CSS for most of the front-end plus TypeScript for the business logic.
+
+## Support and contact details
+
+If you run into any issues with the code you can contribute to the project, reporting the issue and probably suggesting a fix.
+
+### License
+
+This software is under the [MIT](LICENSE) license.
+Copyright (c) {2021} 
+
+## Future
+
+We are planning to add an actual DB for storing the quotes, currently all the quotes are stored locally with some hard-coded quotes.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
