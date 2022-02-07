@@ -19,6 +19,7 @@ export class QuotedetailsComponent implements OnInit {
 
   @Output() onUpdateVoteCount :EventEmitter<VoteRequest> = new EventEmitter()
   @Output() onToggleQuoteView :EventEmitter<number> = new EventEmitter ()
+  @Output() onDeleteQuoteRequest :EventEmitter<number> = new EventEmitter ()
 
   constructor(private authservice: AuthService) { }
 
@@ -30,8 +31,11 @@ export class QuotedetailsComponent implements OnInit {
     this.onToggleQuoteView.emit(this.index)
   }
 
+  deleteQuoteRequest(){
+    this.onDeleteQuoteRequest.emit(this.index)
+  }
+
   getUserDetails(){
-    
     let theName = this.authservice.userDetails;
     if(theName == false){
       console.log("The name" + theName)

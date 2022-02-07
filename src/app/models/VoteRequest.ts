@@ -1,4 +1,4 @@
-export class Vote{
+export class VoteRequest{
     isUpVt?:boolean;
-    voteIdex!:number;
+    voteIndex!:number;
 }

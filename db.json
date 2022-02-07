@@ -1,3 +1,59 @@
 {
-    "users":[]
+  "quotes": [
+    {
+      "author": "me",
+      "quote": "tes",
+      "upvt_count": 0,
+      "dwnvt_count": 0,
+      "time": "7:00:36 PM",
+      "date": "00/07/2022",
+      "id": 1
+    },
+    {
+      "author": "me",
+      "quote": "test",
+      "upvt_count": 0,
+      "dwnvt_count": 0,
+      "time": "7:28:23 PM",
+      "date": "28/07/2022",
+      "id": 2
+    },
+    {
+      "author": "me",
+      "quote": "test2",
+      "upvt_count": 0,
+      "dwnvt_count": 0,
+      "time": "7:31:18 PM",
+      "date": "31/07/2022",
+      "id": 3
+    },
+    {
+      "author": "me",
+      "quote": "test",
+      "upvt_count": 0,
+      "dwnvt_count": 0,
+      "time": "7:37:41 PM",
+      "date": "37/07/2022",
+      "id": 4
+    },
+    {
+      "author": "me",
+      "quote": "test",
+      "upvt_count": 0,
+      "dwnvt_count": 0,
+      "time": "7:56:33 PM",
+      "date": "56/07/2022",
+      "id": 5
+    },
+    {
+      "author": "me",
+      "quote": "test",
+      "upvt_count": 0,
+      "dwnvt_count": 0,
+      "time": "8:20:28 PM",
+      "date": "20/07/2022",
+      "id": 6
+    }
+  ],
+  "votes": []
 }

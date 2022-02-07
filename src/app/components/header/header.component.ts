@@ -20,10 +20,6 @@ export class HeaderComponent implements OnInit {
     return this.router.url === route;
   }
 
-  notHasRoute (route :string){
-    return this.router.url != route;
-  }
-
   addQuote(){
     this.onAddQuote.emit(true);
   }

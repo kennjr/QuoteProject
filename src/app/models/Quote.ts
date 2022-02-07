@@ -5,7 +5,8 @@ export class Quote{
     quote!:string;
     upvt_count!:number;
     dwnvt_count!:number;
-    timestamp!:string;
+    time!:string;
+    date!:string;
     isUpVt?:boolean=false;
     isDwnVt?:boolean=false;
     expandView?:boolean=false;

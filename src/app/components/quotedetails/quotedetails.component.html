@@ -1,0 +1,17 @@
+<div (click)="showQuoteDetails()" *ngIf="quote?.expandView" class="quoteContainer moreInfoContainer">
+    <div class="quoteMain">
+        <p>Created by {{quote?.creator}} {{quote?.date | elapsedTime}}</p>
+        <div *ngIf="quote?.creator == currentName" class="voteContainer upVoteContainer">
+            <p (click)="deleteQuoteRequest()" class="deletebtn">Delete</p>
+        </div>
+    </div>
+    <div style="width: 1.5px; background-color: #ddd; margin-top: 0px; margin-bottom: 10px;"></div>
+    <div class="quoteVoteContainer">
+        <div class="voteContainer upVoteContainer">
+            <p (click)="sendVoteCountUpdate(true)" class="btn">Up</p>
+        </div>
+        <div class="voteContainer upVoteContainer">
+            <p (click)="sendVoteCountUpdate(false)" class="btn">Down</p>
+        </div>
+    </div>
+</div>

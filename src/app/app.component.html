@@ -1,3 +1,3 @@
-<app-header (onAddQuote)="newQuote($event)"></app-header>
-<router-outlet></router-outlet>
+<app-header class="appHeader" (onAddQuote)="newQuote($event)"></app-header>
+<router-outlet class="router"></router-outlet>
 <app-new-quote *ngIf="addNewNoteRequest && hasRoute('/')" (onAddNewQuoteData)="addANewQuote($event)" (onCloseComponent)="newQuote(false)" class="newQuoteForm"></app-new-quote>

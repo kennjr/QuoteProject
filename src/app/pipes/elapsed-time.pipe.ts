@@ -8,8 +8,9 @@ export class ElapsedTimePipe implements PipeTransform {
   transform(value: any, ...args: unknown[]): unknown {
     if (value) {
       const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
+      // If the secs count is less than 29 then we retrun just now
       if (seconds < 29) // less than 30 seconds ago will show as 'Just now'
-          return 'Just now';
+          return 'Today';
       const intervals:any = {
           'year': 31536000,
           'month': 2592000,

@@ -3,7 +3,7 @@
         <h3>Quotes</h3>
     </div>
     <div class="navOptions">
-        <div routerLink="/" *ngIf="!hasRoute('/login')" class="newQuote">
+        <div (click)="addQuote()" class="newQuote">
             <h2>+</h2>
             <p>New Quote</p>
         </div>

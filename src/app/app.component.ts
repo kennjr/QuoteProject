@@ -10,11 +10,12 @@ import { QuotesService } from './services/quotes.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'QuoteProject';
 
   userInfo! :User;
-  username :string = "";
+  username :string = "Anonymous";
+  checkUserDetails :boolean = false;
 
   quotes:Quote[] = [];
 
@@ -23,7 +24,14 @@ export class AppComponent {
   addNewNoteRequest = false;
 
   newQuote(status: boolean){
-    this.addNewNoteRequest = status;
+    if(this.hasRoute("/")){
+      this.addNewNoteRequest = status;
+    }else{
+      if(confirm("Navigate to home for you to add a quote")){
+        this.addNewNoteRequest = status;
+        this.router.navigateByUrl("/")
+      }
+    }
   }
 
   hasRoute (route :string){
@@ -31,11 +39,12 @@ export class AppComponent {
   }
 
   addANewQuote(quote :Quote){
-    if (this.username == ""){
+    if (this.username == "Anonymous" && !this.checkUserDetails){
       this.getUserDetails();
     }
 
     quote.creator = this.username;
+    console.log("The quote being added " + quote.creator )
     this.addNewQuoteToDB(quote);
   }
 
@@ -48,6 +57,12 @@ export class AppComponent {
   addNewQuoteToDB (quote: Quote){
     // console.log(task)
     this.quoteservice.addQuote(quote).subscribe((quote) => (this.quotes.unshift(quote)))
+    this.quoteservice.addQuoteToLocalArray(quote);
     console.log(this.quotes);
   }
+
+  addMultipleQuotesToLocalArray(quotes: Quote[]){
+    this.quoteservice.addBatchQuotesToLocalArray(quotes);
+  }
+
 }

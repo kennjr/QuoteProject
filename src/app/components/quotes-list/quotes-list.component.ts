@@ -18,6 +18,8 @@ export class QuotesListComponent implements OnInit {
   allQuotes:Quote[] = [] ;
   allQuotesArray:Quote[] = [];
 
+  thename:string = "Anonymous";
+
   constructor(private authservice :AuthService, private quoteservice :QuotesService) { }
 
   ngOnInit(): void {
@@ -29,17 +31,26 @@ export class QuotesListComponent implements OnInit {
   mostUpvotedQuoteIndex:number = 0
 
   getUserDetails(){
-    this.details = this.authservice.userDetails
-    this.teststring = this.details.name + " " + this.details.email + " " + this.details.password + " " + this.details.timestamp
+    let allInfo = this.authservice.userDetails
+    console.log("Current name" + allInfo);
+    if(allInfo != "false"){
+      this.details = allInfo
+      this.thename = this.details.name
+    }
+    // this.authservice.userDetails.name
+  }
+
+  deleteQuote(index:number){
+    this.quoteservice.deleteQuoteFromArray(index);
   }
 
   // The fun that'll get us all the quotes from the server
   getAllQuotes (){
-    this.quoteservice.getQuotes().subscribe((quotes) => {
-      this.allQuotesArray.push(...quotes)
-      this.mostUpvotedQuoteIndex = this.quoteservice.getQuoteWithHighestUpVote();
-      this.allQuotes = quotes
-    })
+    let quotes:Quote[] = this.quoteservice.defaultLisOfQuotes()
+    console.log("The fun was called" + quotes[1].author)
+    this.quoteservice.addBatchQuotesToLocalArray(quotes)
+    // this.allQuotesArray.push(...quotes)
+    this.mostUpvotedQuoteIndex = this.quoteservice.getQuoteWithHighestUpVote();
   }
 
   getLocalQuotesArray(){
@@ -84,14 +95,12 @@ export class QuotesListComponent implements OnInit {
     // If the user added dwn votes and the dwn vote had been added then we just subtract the added dwn-vote
     else if(!isUpVt && quote.isDwnVt && !quote.isUpVt){
       quote.dwnvt_count -= 1;
-      quote.upvt_count -= 1;
 
       quote.isUpVt = false;
       quote.isDwnVt = false;
     }
     // If the user added up votes and the up vote had been added then we just subtract the added up-vote
     else if(isUpVt && quote.isUpVt && !quote.isDwnVt){
-      quote.dwnvt_count -= 1;
       quote.upvt_count -= 1;
 
       quote.isUpVt = false;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quote } from 'src/app/models/Quote';
 
 @Component({
@@ -12,13 +12,15 @@ export class QuotecollapsedComponent implements OnInit {
   @Input() index?: number;
   @Input() mostUpvotedQuoteIndex?: number;
 
+  @Output() onToggleQuoteView :EventEmitter<number> = new EventEmitter ()
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   showQuoteDetails (){
-    
+    this.onToggleQuoteView.emit(this.index)
   }
 
 }

@@ -24,9 +24,8 @@ export class NewQuoteComponent implements OnInit {
   addNewQuote(){
     let quoteInput = this.quote;
     let authorInput = this.author;
+    // Check whether the fields are empty
     if(quoteInput != "" && authorInput != ""){
-      let today = new Date();
-
       let theDate = this.datepipe.transform(new Date(), "mm/dd/yyyy")
       const quote :Quote = {
         author:authorInput,
@@ -37,17 +36,19 @@ export class NewQuoteComponent implements OnInit {
         date:theDate!.toString()
       }
 
+      // Send the created quote to the parent component for it to be added to the db
       this.onAddNewQuoteData.emit(quote);
       this.closeComponent();
     }
     else if( quoteInput == "" ){
-
+      alert("The quote field is empty")
     }
     else if( authorInput == "" ){
-      
+      alert("The author field is empty")
     }
   }
 
+  // Close the component whenever this fun is called
   closeComponent(){
     this.onCloseComponent.emit(true); 
   }

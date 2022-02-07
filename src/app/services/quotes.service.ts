@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Quote } from '../models/Quote';
 import { Observable, of } from 'rxjs';
+import { Quotes } from 'defaultQuotes';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 // This is needed if we are gon send data to the db or update data that's already in the db
@@ -63,6 +64,18 @@ export class QuotesService {
       }
     }
     return theVal;
+  }
+
+  // This is the fun for deleting a quote from the local quotes array
+  deleteQuoteFromArray(index:number){
+    // Confirm that the index is valid
+    if(index > -1){
+      this.localQuotesArray.splice(index, 1);
+    }
+  }
+
+  defaultLisOfQuotes (){
+    return Quotes;
   }
 
 }
