@@ -3,12 +3,11 @@
     flex-direction: row;
 }
 
-.quotesListContainer{
-    background-color: #fff;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
-    margin: 10px 20px;
-    padding: 0px 10px;
-    border-radius: 4px;
+.dividingLine{
+    width: 1.5px; 
+    background-color: #ddd; 
+    margin-top: 10px; 
+    margin-bottom: 0px;
 }
 
 .quoteText{
@@ -46,6 +45,101 @@
     flex-direction: column;
 }
 
-.quotesListContainer:hover{
-    cursor: pointer;
+.quoteContainer{
+    border-radius: 4px;
+    margin: 3px 0px;
+}
+
+
+/* Styling for the phone */
+@media only screen and (min-width: 360px) and (max-width: 640px) { 
+    /* Here are some changes*/
+    .container{
+        height: 100%;
+        width: 70%;
+        margin-top: 15%;
+        margin-left: 10%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .quoteMain{
+        padding-left: 10px;
+        width: 100%;
+    }
+    .quoteContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .quoteVoteContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+/* Styling for the phone */
+@media only screen and (min-width: 641px) and (max-width: 880px) { 
+    /* Here are some changes*/
+    .container{
+        height: 100%;
+        width: 70%;
+        margin-top: 15%;
+        margin-left: 10%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .quoteMain{
+        padding-left: 10px;
+        width: 100%;
+    }
+    .quoteContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .quoteVoteContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+/* Styling for the phone */
+@media only screen 
+    and (min-width: 881px)
+    and (max-width: 1200px) { 
+    /* Here are some changes*/
+    /* Here are some changes*/
+    .container{
+        height: 100%;
+        width: 70%;
+        margin-top: 15%;
+        margin-left: 10%;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .quoteMain{
+        padding-left: 10px;
+        width: 100%;
+    }
+    .quoteContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .quoteVoteContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
 }
