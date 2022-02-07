@@ -41,16 +41,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Support and contact details
-
 If you run into any issues with the code you can contribute to the project, reporting the issue and probably suggesting a fix.
+
+## Future
+
+We are planning to add an actual DB for storing the quotes, currently all the quotes are stored locally with some hard-coded quotes.
 
 ### License
 
 This software is under the [MIT](LICENSE) license.
 Copyright (c) {2021} 
 
-## Future
-
-We are planning to add an actual DB for storing the quotes, currently all the quotes are stored locally with some hard-coded quotes.
