@@ -22,6 +22,8 @@ export class QuotesService {
 
   localQuotesArray :Quote[] = [];
 
+  idOfMostUpTVtQuote = 0;
+
   getQuotes():Observable<Quote[]>{
     return this.httpclient.get<Quote[]>(this.apiUrl);
   }
@@ -48,22 +50,20 @@ export class QuotesService {
 
   getQuoteWithHighestUpVote(array: Quote[]):number{
     let theVal = 0;
-    let initialHighestCount = 0;
-    if(array.length >= 0){
-      for(let x = 0; x < array.length; x++){
-        let currentQuote = array[x];
+    let initialHigh = 0;
+    if(this.localQuotesArray.length >= 0){
+      for(let x = 0; x <= this.localQuotesArray.length - 1; x++){
+        let currentQuote = this.localQuotesArray[x];
         let quoteUpVtCount = currentQuote.upvt_count;
-        if(quoteUpVtCount > initialHighestCount){
-          initialHighestCount = quoteUpVtCount
-          console.log("NaN changed to" + x)
-          // theVal = x;
-          console.log("The number hasn't changed to "+ x)
-
+        if(quoteUpVtCount > initialHigh){
+          initialHigh = quoteUpVtCount
+          console.log(currentQuote)
           if(theVal < x){
-            console.log("The number has changed to "+ x + " with a count of " + quoteUpVtCount)
-            if(currentQuote.id != undefined && currentQuote.id != NaN && currentQuote.id != null){
-              this.mostUpVotesIndex = currentQuote.id
+            if(currentQuote.id != null){
+              this.idOfMostUpTVtQuote = currentQuote.id
             }
+            // this.idOfMostUpTVtQuote ? currentQuote.id : this.idOfMostUpTVtQuote;
+            console.log("The value from the idofMost is " + this.idOfMostUpTVtQuote + " id is " + currentQuote.id)
             theVal = x;
           }
         }
@@ -73,12 +73,8 @@ export class QuotesService {
     return theVal;
   }
 
-  get highestVoteCount (){
-    return of(this.mostUpVotesIndex);
-  }
-
-  setHightestUpVtCount (newVal :number){
-    this.mostUpVotesIndex = newVal
+  getidOfHighestVoteCount() :Observable<number>{
+    return of(this.idOfMostUpTVtQuote)
   }
 
   // This is the fun for deleting a quote from the local quotes array

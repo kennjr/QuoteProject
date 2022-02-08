@@ -13,28 +13,17 @@ export class QuotecollapsedComponent implements OnInit {
   @Input() index?: number;
   @Input() mostUpvotedQuoteIndex?: number;
 
-  @Output() onToggleQuoteView :EventEmitter<number> = new EventEmitter ()
+  idOfQuoteWithMostVotes?: number;
 
-  currentMostUpVtCountIndex:number = 0;
-  
+  @Output() onToggleQuoteView :EventEmitter<number> = new EventEmitter ()
 
   constructor(private quoteservice: QuotesService) { }
 
   ngOnInit(): void {
-    this.currentMostUpVtCountIndex = this.mostUpvotedQuoteIndex!;
-    // this.index! += 1
-    this.getMostUpVtIndex()
+    this.quoteservice.getidOfHighestVoteCount().subscribe((id) => (this.idOfQuoteWithMostVotes = id))
   }
 
   showQuoteDetails (){
     this.onToggleQuoteView.emit(this.index)
   }
-
-  getMostUpVtIndex(){
-    this.quoteservice.highestVoteCount.subscribe((theIndex) => {
-      this.currentMostUpVtCountIndex = theIndex;
-    })
-  }
-
-
 }

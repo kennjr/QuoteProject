@@ -1,4 +1,4 @@
-<div *ngIf="mostUpvotedQuoteIndex !== index" class="quoteContainer" (click)="showQuoteDetails()">
+<div *ngIf="idOfQuoteWithMostVotes !== quote?.id" class="quoteContainer" (click)="showQuoteDetails()">
     <div class="quoteMain">
         <p [ngClass]="{'highlightit': currentMostUpVtCountIndex === index}" class="quoteText">{{quote?.quote}} </p>
         <p class="quoteAuthor">- {{quote?.author}}</p>
@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="mostUpvotedQuoteIndex === index" appHighlight class="quoteContainer" (click)="showQuoteDetails()">
+<div *ngIf="idOfQuoteWithMostVotes === quote?.id" appHighlight class="quoteContainer" (click)="showQuoteDetails()">
     <div class="quoteMain">
         <p [ngClass]="{'highlightit' : mostUpvotedQuoteIndex === index}" class="quoteText">{{quote?.quote}} </p>
         <!-- <p [ngClass]="{'highlightit' : mostUpvotedQuoteIndex === i}" *ngIf="mostUpvotedQuoteIndex === i" class="quoteText">{{quote.quote}} </p> -->
