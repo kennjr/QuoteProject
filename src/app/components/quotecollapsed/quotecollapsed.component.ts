@@ -15,11 +15,14 @@ export class QuotecollapsedComponent implements OnInit {
 
   @Output() onToggleQuoteView :EventEmitter<number> = new EventEmitter ()
 
-  currentMostUpVtCountIndex = 0;
+  currentMostUpVtCountIndex:number = 0;
+  
 
   constructor(private quoteservice: QuotesService) { }
 
   ngOnInit(): void {
+    this.currentMostUpVtCountIndex = this.mostUpvotedQuoteIndex!;
+    // this.index! += 1
     this.getMostUpVtIndex()
   }
 
@@ -32,5 +35,6 @@ export class QuotecollapsedComponent implements OnInit {
       this.currentMostUpVtCountIndex = theIndex;
     })
   }
+
 
 }
