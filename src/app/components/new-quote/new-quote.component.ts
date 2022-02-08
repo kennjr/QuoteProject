@@ -39,7 +39,8 @@ export class NewQuoteComponent implements OnInit {
         dwnvt_count:0,
         creator:this.currentUsername,
         time:today.toLocaleTimeString(),
-        date:((today.getMonth()+1)  + "/" + today.getDate() + "/" + today.getFullYear()).toString()
+        date:today.toString()
+        // date:((today.getMonth()+1)  + "/" + today.getDate() + "/" + today.getFullYear()).toString()
       }
       console.log("Today end" + today.toTimeString())
 
