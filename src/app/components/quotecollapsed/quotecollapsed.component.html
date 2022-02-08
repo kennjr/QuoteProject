@@ -1,6 +1,6 @@
-<div *ngIf="mostUpvotedQuoteIndex !== index" class="quoteContainer" (click)="showQuoteDetails()">
+<div *ngIf="currentMostUpVtCountIndex !== index" class="quoteContainer" (click)="showQuoteDetails()">
     <div class="quoteMain">
-        <p [ngClass]="{'highlightit': mostUpvotedQuoteIndex === index}" class="quoteText">{{quote?.quote}} </p>
+        <p [ngClass]="{'highlightit': currentMostUpVtCountIndex === index}" class="quoteText">{{quote?.quote}} </p>
         <p class="quoteAuthor">- {{quote?.author}}</p>
     </div>
     <div style="width: 1.5px; background-color: #ddd; margin-top: 10px; margin-bottom: 0px;"></div>
