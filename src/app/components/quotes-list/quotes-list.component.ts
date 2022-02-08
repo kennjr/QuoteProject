@@ -56,7 +56,7 @@ export class QuotesListComponent implements OnInit {
     this.quoteservice.getQuotesArray().subscribe((quotesArray) => {
       this.allQuotesArray = quotesArray
       this.mostUpvotedQuoteIndex = this.quoteservice.getQuoteWithHighestUpVote(quotesArray);
-      this.quoteservice.setHightestUpVtCount((this.mostUpvotedQuoteIndex + 1))
+      
     })
   }
 
