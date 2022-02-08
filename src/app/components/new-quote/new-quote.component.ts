@@ -31,8 +31,9 @@ export class NewQuoteComponent implements OnInit {
     if(quoteInput != "" && authorInput != ""){
       let today = new Date()
       console.log("Today " + (today.getMonth()+1)  + "/" + today.getDate() + "/" + today.getFullYear())
-      
+      let id = Math.random()
       const quote :Quote = {
+        id:id,
         author:authorInput,
         quote:quoteInput,
         upvt_count:0,

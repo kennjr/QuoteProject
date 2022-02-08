@@ -50,13 +50,13 @@ export class QuotesListComponent implements OnInit {
     console.log("The fun was called" + quotes[1].author)
     this.quoteservice.addBatchQuotesToLocalArray(quotes)
     // this.allQuotesArray.push(...quotes)
-    this.mostUpvotedQuoteIndex = this.quoteservice.getQuoteWithHighestUpVote();
   }
 
   getLocalQuotesArray(){
     this.quoteservice.getQuotesArray().subscribe((quotesArray) => {
       this.allQuotesArray = quotesArray
-      this.mostUpvotedQuoteIndex = this.quoteservice.getQuoteWithHighestUpVote();
+      this.mostUpvotedQuoteIndex = this.quoteservice.getQuoteWithHighestUpVote(quotesArray);
+      this.quoteservice.setHightestUpVtCount((this.mostUpvotedQuoteIndex + 1))
     })
   }
 
@@ -107,13 +107,6 @@ export class QuotesListComponent implements OnInit {
       quote.isDwnVt = false;
     }
     this.quoteservice.updateLocalArrayQuote(index, quote);
-  }
-
-  
-
-  ngAfterViewInit(): void {
-    console.log("The message ran")
-    this.mostUpvotedQuoteIndex = this.quoteservice.getQuoteWithHighestUpVote()
   }
 
 }

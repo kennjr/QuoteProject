@@ -18,6 +18,7 @@ export class QuotesService {
 
   private apiUrl = "http://localhost:5000/quotes";
   constructor(private httpclient: HttpClient) { }
+  mostUpVotesIndex = 0
 
   localQuotesArray :Quote[] = [];
 
@@ -45,18 +46,24 @@ export class QuotesService {
     this.localQuotesArray[index] = newQuote;
   }
 
-  getQuoteWithHighestUpVote():number{
+  getQuoteWithHighestUpVote(array: Quote[]):number{
     let theVal = 0;
-    if(this.localQuotesArray.length >= 0){
-      for(let x = 0; x <= this.localQuotesArray.length - 1; x++){
-        let currentQuote = this.localQuotesArray[x];
+    let initialHighestCount = 0;
+    if(array.length >= 0){
+      for(let x = 0; x < array.length; x++){
+        let currentQuote = array[x];
         let quoteUpVtCount = currentQuote.upvt_count;
-        if(quoteUpVtCount > 0){
+        if(quoteUpVtCount > initialHighestCount){
+          initialHighestCount = quoteUpVtCount
           console.log("NaN changed to" + x)
           // theVal = x;
-          console.log(currentQuote)
+          console.log("The number hasn't changed to "+ x)
 
           if(theVal < x){
+            console.log("The number has changed to "+ x + " with a count of " + quoteUpVtCount)
+            if(currentQuote.id != undefined && currentQuote.id != NaN && currentQuote.id != null){
+              this.mostUpVotesIndex = currentQuote.id
+            }
             theVal = x;
           }
         }
@@ -64,6 +71,14 @@ export class QuotesService {
       }
     }
     return theVal;
+  }
+
+  get highestVoteCount (){
+    return of(this.mostUpVotesIndex);
+  }
+
+  setHightestUpVtCount (newVal :number){
+    this.mostUpVotesIndex = newVal
   }
 
   // This is the fun for deleting a quote from the local quotes array
