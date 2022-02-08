@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Quote } from 'src/app/models/Quote';
-// We need this for us to format the date as desired 
-import { DatePipe } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-new-quote',
@@ -12,13 +12,16 @@ export class NewQuoteComponent implements OnInit {
 
   quote:string="";
   author:string="";
+  details!:User;
+  currentUsername:string = "Anonymous";
 
   @Output() onCloseComponent :EventEmitter<boolean> = new EventEmitter ();
   @Output() onAddNewQuoteData :EventEmitter<Quote> = new EventEmitter ();
 
-  constructor(private datepipe: DatePipe) { }
+  constructor(private authservice: AuthService) { }
 
   ngOnInit(): void {
+    this.getUserDetails();
   }
 
   addNewQuote(){
@@ -26,15 +29,19 @@ export class NewQuoteComponent implements OnInit {
     let authorInput = this.author;
     // Check whether the fields are empty
     if(quoteInput != "" && authorInput != ""){
-      let theDate = this.datepipe.transform(new Date(), "mm/dd/yyyy")
+      let today = new Date()
+      console.log("Today " + (today.getMonth()+1)  + "/" + today.getDate() + "/" + today.getFullYear())
+      
       const quote :Quote = {
         author:authorInput,
         quote:quoteInput,
         upvt_count:0,
         dwnvt_count:0,
-        time:new Date().toLocaleTimeString(),
-        date:theDate!.toString()
+        creator:this.currentUsername,
+        time:today.toLocaleTimeString(),
+        date:((today.getMonth()+1)  + "/" + today.getDate() + "/" + today.getFullYear()).toString()
       }
+      console.log("Today end" + today.toTimeString())
 
       // Send the created quote to the parent component for it to be added to the db
       this.onAddNewQuoteData.emit(quote);
@@ -45,6 +52,16 @@ export class NewQuoteComponent implements OnInit {
     }
     else if( authorInput == "" ){
       alert("The author field is empty")
+    }
+  }
+
+  getUserDetails(){
+    let userdetails = this.authservice.userDetails
+    if (userdetails == false){
+      this.currentUsername = "Anonymous";
+    }else{
+      this.details = userdetails;
+      this.currentUsername = this.details.name;
     }
   }
 

@@ -43,7 +43,6 @@ export class AppComponent{
       this.getUserDetails();
     }
 
-    quote.creator = this.username;
     console.log("The quote being added " + quote.creator )
     this.addNewQuoteToDB(quote);
   }
