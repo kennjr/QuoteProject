@@ -1,5 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Quote } from 'src/app/models/Quote';
+<<<<<<< HEAD
+=======
+// We need this for us to format the date as desired 
+import { DatePipe } from '@angular/common';
+>>>>>>> development
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/User';
 
@@ -18,7 +23,11 @@ export class NewQuoteComponent implements OnInit {
   @Output() onCloseComponent :EventEmitter<boolean> = new EventEmitter ();
   @Output() onAddNewQuoteData :EventEmitter<Quote> = new EventEmitter ();
 
+<<<<<<< HEAD
   constructor(private authservice: AuthService) { }
+=======
+  constructor(private datepipe: DatePipe, private authservice: AuthService) { }
+>>>>>>> development
 
   ngOnInit(): void {
     this.getUserDetails();
@@ -31,7 +40,11 @@ export class NewQuoteComponent implements OnInit {
     if(quoteInput != "" && authorInput != ""){
       let today = new Date()
       console.log("Today " + (today.getMonth()+1)  + "/" + today.getDate() + "/" + today.getFullYear())
+<<<<<<< HEAD
       let id = Math.random()
+=======
+      
+>>>>>>> development
       const quote :Quote = {
         id:id,
         author:authorInput,
@@ -40,8 +53,12 @@ export class NewQuoteComponent implements OnInit {
         dwnvt_count:0,
         creator:this.currentUsername,
         time:today.toLocaleTimeString(),
+<<<<<<< HEAD
         date:today.toString()
         // date:((today.getMonth()+1)  + "/" + today.getDate() + "/" + today.getFullYear()).toString()
+=======
+        date:((today.getMonth()+1)  + "/" + today.getDate() + "/" + today.getFullYear()).toString()
+>>>>>>> development
       }
       console.log("Today end" + today.toTimeString())
 
