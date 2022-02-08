@@ -18,7 +18,7 @@ export let Quotes: Quote[] = [
           time: "1:41:49 AM",
           date: "02/07/2022",
           creator: "User1",
-          id: 1
+          id: 2
         },
         {
           author: "Vince Lombardi",
@@ -28,7 +28,7 @@ export let Quotes: Quote[] = [
           time: "1:40:49 AM",
           date: "02/07/2022",
           creator: "User2",
-          id: 1
+          id: 3
         },
         {
           author: "Theodore Roosevelt",
@@ -38,7 +38,7 @@ export let Quotes: Quote[] = [
           time: "1:35:30 AM",
           date: "02/07/2022",
           creator: "User1",
-          id: 1
+          id: 4
         },
         {
           author: "Lao Tzu",
@@ -48,7 +48,7 @@ export let Quotes: Quote[] = [
           time: "1:24:19 AM",
           date: "02/07/2022",
           creator: "User3",
-          id: 1
+          id: 5
         },
         {
           author: "Benjamin Franklin",
@@ -58,7 +58,7 @@ export let Quotes: Quote[] = [
           time: "3:01:29 PM",
           date: "02/05/2022",
           creator: "User1",
-          id: 1
+          id: 6
         },
         {
           author: "John F. Kennedy",
@@ -68,7 +68,7 @@ export let Quotes: Quote[] = [
           time: "2:40:49 PM",
           date: "02/05/2022",
           creator: "User2",
-          id: 1
+          id: 7
         },
         {
           author: "Ray Kroc",
@@ -78,7 +78,7 @@ export let Quotes: Quote[] = [
           time: "2:29:19 AM",
           date: "02/05/2022",
           creator: "User2",
-          id: 1
+          id: 8
         },
         {
           author: "Vince Lombardi",
@@ -88,7 +88,7 @@ export let Quotes: Quote[] = [
           time: "1:01:49 PM",
           date: "02/03/2022",
           creator: "User3",
-          id: 1
+          id: 9
         },
         {
           author: "Ronald Regan",
@@ -98,6 +98,6 @@ export let Quotes: Quote[] = [
           time: "12:31:09 AM",
           date: "02/01/2022",
           creator: "User3",
-          id: 1
+          id: 10
         }
 ]

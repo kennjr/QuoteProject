@@ -21,6 +21,8 @@ export class QuotesService {
 
   localQuotesArray :Quote[] = [];
 
+  idOfMostUpTVtQuote = 0;
+
   getQuotes():Observable<Quote[]>{
     return this.httpclient.get<Quote[]>(this.apiUrl);
   }
@@ -47,16 +49,20 @@ export class QuotesService {
 
   getQuoteWithHighestUpVote():number{
     let theVal = 0;
+    let initialHigh = 0;
     if(this.localQuotesArray.length >= 0){
       for(let x = 0; x <= this.localQuotesArray.length - 1; x++){
         let currentQuote = this.localQuotesArray[x];
         let quoteUpVtCount = currentQuote.upvt_count;
-        if(quoteUpVtCount > 0){
-          console.log("NaN changed to" + x)
-          // theVal = x;
+        if(quoteUpVtCount > initialHigh){
+          initialHigh = quoteUpVtCount
           console.log(currentQuote)
-
           if(theVal < x){
+            if(currentQuote.id != null){
+              this.idOfMostUpTVtQuote = currentQuote.id
+            }
+            // this.idOfMostUpTVtQuote ? currentQuote.id : this.idOfMostUpTVtQuote;
+            console.log("The value from the idofMost is " + this.idOfMostUpTVtQuote + " id is " + currentQuote.id)
             theVal = x;
           }
         }
@@ -64,6 +70,10 @@ export class QuotesService {
       }
     }
     return theVal;
+  }
+
+  getidOfHighestVoteCount() :Observable<number>{
+    return of(this.idOfMostUpTVtQuote)
   }
 
   // This is the fun for deleting a quote from the local quotes array
